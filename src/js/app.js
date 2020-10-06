@@ -5,19 +5,9 @@ console.log('worked');
 
 console.log(sum([1, 2]));
 
-// function sortArray(arr) {
-//     return arr.sort((a, b) => {
-//         if (a.key > b.key) {
-//             return 1
-//         } else  {
-//             return -1
-//         }
-//     });
-//   }
-
 const obj = {name: 'мечник', health: 10, level: 2, attack: 80, defence: 40}
 
-export const orderByProps = (object, array) => {
+const orderByProps = (object, array) => {
     let sortByArray = []
     let sortByAlphabet = []
     for(let key in object) {
@@ -35,7 +25,6 @@ export const orderByProps = (object, array) => {
                   return -1
               }
           })
-            //sortArray(sortByAlphabet)
         }
     }
 
@@ -69,14 +58,21 @@ const character = {
   }
 
 
-export function destructuring(object) {
+function destructuring(object) {
+
+    let array = []
     const {special} = object
     special.forEach(element => {
-        if (!element.description) {
-            element.description = 'Описание недоступно'
-        }
+      let newElement = {...element}
+      if (!element.description) {
+        newElement.description = 'Описание недоступно'
+      }
+      array.push(newElement)
     })
-    return special
+    return array
   }
 
-  console.log(destructuring(character))
+  console.log(destructuring(character));
+
+
+export {orderByProps, destructuring};
